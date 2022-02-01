@@ -16,6 +16,7 @@ import {
 } from '@solana/spl-token';
 import * as metaplex from '@metaplex/js';
 import { IDL, AuctionHouse } from '../target/types/auction_house';
+import { NodeWallet } from '@project-serum/anchor/dist/cjs/provider';
 const MetadataDataData = metaplex.programs.metadata.MetadataDataData;
 const CreateMetadata = metaplex.programs.metadata.CreateMetadata;
 
@@ -142,7 +143,7 @@ describe('auction-house', () => {
       AUCTION_HOUSE_PROGRAM_ID,
       new Provider(
         getProvider().connection,
-        new Wallet(sellerWallet),
+        new NodeWallet(sellerWallet),
         Provider.defaultOptions(),
       ),
     );
@@ -151,7 +152,7 @@ describe('auction-house', () => {
       AUCTION_HOUSE_PROGRAM_ID,
       new Provider(
         getProvider().connection,
-        new Wallet(buyerWallet),
+        new NodeWallet(buyerWallet),
         Provider.defaultOptions(),
       ),
     );
